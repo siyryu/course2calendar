@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         武汉理工课表导出 
 // @namespace    https://github.com/ooohy/course2calendar
-// @version      0.2
-// @description  try to take over the world!
+// @version      0.3
+// @description  从教务处导出课表为ics文件
 // @author       榆 
 // @match        http://sso.jwc.whut.edu.cn/Certification/toIndex.do
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bilibili.com
