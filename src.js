@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         武汉理工课表导出 
 // @namespace    https://github.com/ooohy/course2calendar
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @author       榆 
 // @match        http://sso.jwc.whut.edu.cn/Certification/toIndex.do
