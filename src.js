@@ -1,15 +1,14 @@
 // ==UserScript==
-// @name         武汉理工课表导出
+// @name         武汉理工课表导出 
 // @namespace    https://github.com/ooohy/course2calendar
 // @version      0.1
 // @description  try to take over the world!
-// @author       榆
+// @author       榆 
 // @match        http://sso.jwc.whut.edu.cn/Certification/toIndex.do
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bilibili.com
 // @grant        none
 // @license      MIT
 // ==/UserScript==
-
 
 // TODO:
 //  模拟点击课表
@@ -32,7 +31,7 @@
 
         new Date(2022, 9, 1,14, 0, 0),
         new Date(2022, 9, 1,14, 50, 0),
-        new Date(2022, 9, 1,15, 40),
+        new Date(2022, 9, 1,15, 40, 0),
         new Date(2022, 9, 1,16, 45, 0),
         new Date(2022, 9, 1,17, 35, 0),
 
@@ -41,7 +40,7 @@
         new Date(2022, 9, 1,19, 50, 0),
         new Date(2022, 9, 1,20, 50, 0),
     ]
-    
+
     function get_course() {
         // 获取课表
         const tb = document.getElementById("xqkb").getElementsByClassName("table-box").item(0)
@@ -283,15 +282,28 @@
     }
     
     function main() {
-        const course_list = generate_course_list();
-        let res = new ICS();
+        // add button
+        var btn_area = document.querySelector(".table-p");
+        var btn = document.createElement("button");
+        btn.id = "btn_export";
+        btn.textContent = "导出课表";
+        btn.onclick = function () {
+            //点击学期课表
+            console.log("click");
+            document.querySelector("button").click()
+            
+            //
+            const course_list = generate_course_list();
+            let res = new ICS();
 
-        for (let i = 0; i < course_list.length; i++) {
-            let e = new ICSEvent(ics_time_format(course_list[i].start), ics_time_format(course_list[i].end), course_list[i].name, course_list[i].location);
-            res.pushEvent(e);
+            for (let i = 0; i < course_list.length; i++) {
+                let e = new ICSEvent(ics_time_format(course_list[i].start), ics_time_format(course_list[i].end), course_list[i].name, course_list[i].location);
+                res.pushEvent(e);
+            }
+            res.pushCalendarEnd();
+            res.exportIcs();
         }
-        res.pushCalendarEnd();
-        res.exportIcs();
+        btn_area.appendChild(btn);
     }
 
     main();
